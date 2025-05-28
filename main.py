@@ -20,7 +20,7 @@ def startup_event():
     fetch_data()
     threading.Thread(target=auto_refresh, daemon=True).start()
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def index():
     return {"status": "ok", "message": "Espanso API is running."}
 

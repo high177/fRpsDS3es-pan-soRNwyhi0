@@ -29,7 +29,7 @@ def get_trigger(trigger: str):
     data = get_cached_data() or []
     trigger_full = f":{trigger}".lower()
     for row in data:
-        if row.get("trigger", "").lower() == trigger_full:
+        if row.get("TRIGGER", "").lower() == trigger_full:
             return row.get("replace", "")
     return "❌ Trigger tidak ditemukan"
 
@@ -41,7 +41,7 @@ def refresh_data():
 @app.get("/list", response_class=JSONResponse)
 def list_triggers():
     data = get_cached_data() or []
-    result = [{"trigger": row.get("trigger"), "output": row.get("replace")} for row in data]
+    result = [{"TRIGGER": row.get("TRIGGER"), "REPLACE": row.get("REPLACE")} for row in data]
     return {"count": len(result), "triggers": result}
 
 # ✅ Untuk lokal testing

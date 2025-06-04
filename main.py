@@ -30,7 +30,7 @@ def get_trigger(trigger: str):
     trigger_full = f"#{trigger}".lower()
     for row in data:
         if row.get("TRIGGER", "").lower() == trigger_full:
-            return row.get("replace", "")
+            return row.get("REPLACE", "")
     return "❌ Trigger tidak ditemukan"
 
 @app.get("/refresh")
@@ -42,7 +42,7 @@ def refresh_data():
 def list_triggers():
     data = get_cached_data() or []
     result = [{"TRIGGER": row.get("TRIGGER"), "REPLACE": row.get("REPLACE")} for row in data]
-    return {"count": len(result), "triggers": result}
+    return {"count": len(result), "TRIGGER": result}
 
 # ✅ Untuk lokal testing
 if __name__ == "__main__":

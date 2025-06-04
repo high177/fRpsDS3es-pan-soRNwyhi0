@@ -41,7 +41,7 @@ def refresh_data():
 @app.get("/list", response_class=JSONResponse)
 def list_triggers():
     data = get_cached_data() or []
-    result = [{"trigger": row.get("trigger"), "replace": row.get("replace")} for row in data]
+    result = [{"trigger": row.get("trigger"), "output": row.get("replace")} for row in data]
     return {"count": len(result), "triggers": result}
 
 # ✅ Untuk lokal testing

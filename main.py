@@ -28,6 +28,10 @@ def index():
 def get_trigger(trigger: str):
     data = get_cached_data() or []
     trigger_full = f"#{trigger}".lower()
+
+    print("🔍 Looking for trigger:", trigger_full)
+    print("🧾 Data cache:", data)  # <--- Tambahkan ini
+    
     for row in data:
         if row.get("TRIGGER", "").lower() == trigger_full:
             return row.get("REPLACE", "")

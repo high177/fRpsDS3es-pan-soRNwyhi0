@@ -27,7 +27,7 @@ def index():
 @app.get("/trigger/{trigger}", response_class=PlainTextResponse)
 def get_trigger(trigger: str):
     data = get_cached_data() or []
-    trigger_full = f":{trigger}".lower()
+    trigger_full = f"#{trigger}".lower()
     for row in data:
         if row.get("TRIGGER", "").lower() == trigger_full:
             return row.get("replace", "")
